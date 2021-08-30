@@ -9,3 +9,5 @@
 中青看点极速版2 = script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/youth.js,type=http-request,,pattern=^https:\/\/ios\.baertt\.com\/v5\/article\/red_packet
 # 中青看点极速版
 中青看点极速版3 = script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/youth.js,type=http-request,,pattern=^https:\/\/ios\.baertt\.com\/v5\/user\/app_stay\.json
+[MITM]
+hostname = ios.baertt.com,*.youth.cn
