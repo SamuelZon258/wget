@@ -1,10 +1,10 @@
 [Script]
 中青获取body = requires-body=true,script-path=https://raw.githubusercontent.com/songyangzz/QuantumultX/master/zqgetbody.js,type=http-response,pattern=^https:\/\/kandian\.wkandian\.com\/v5\/article\/complete.json, enable=true,max-size=1048576
-中青看点极速版0 = requires-body=true,script-path=https://raw.githubusercontent.com/SamuelZon258/wget/main/youth_sign.js,type=http-response,pattern=^https:\/\/\w+\.youth\.cn\/TaskCenter\/(sign|getSign), enable=true,max-size=1048576
-中青看点极速版1 = requires-body=true,script-path=https://raw.githubusercontent.com/SamuelZon258/wget/main/youth_sign.js,type=http-response,pattern=^https?:\/\//kandian\.wkandian\.com\/v5\/article\/complete, enable=true,max-size=1048576
-中青看点极速版2 = requires-body=true,script-path=https://raw.githubusercontent.com/SamuelZon258/wget/main/youth_sign.js,type=http-response,pattern=^https:\/\//kandian\.wkandian\.com\/v5\/article\/red_packet, enable=true,max-size=1048576
-中青看点极速版3 = requires-body=true,script-path=https://raw.githubusercontent.com/SamuelZon258/wget/main/youth_sign.js,type=http-response,pattern=^https:\/\//kandian\.wkandian\.com\/v5\/user\/app_stay\.json, enable=true,max-size=1048576
-中青看点极速版4 = requires-body=true,script-path=https://raw.githubusercontent.com/SamuelZon258/wget/main/youth_sign.js,type=http-response,pattern=^https:\/\/\w+\.youth\.cn\/WebApi\/PunchCard\/signUp, enable=true,max-size=1048576
+中青看点极速版0 = requires-body=true,script-path=https://raw.githubusercontent.com/SamuelZon258/wget/main/youth.js,type=http-response,pattern=^https:\/\/\w+\.youth\.cn\/TaskCenter\/(sign|getSign), enable=true,max-size=1048576
+中青看点极速版1 = requires-body=true,script-path=https://raw.githubusercontent.com/SamuelZon258/wget/main/youth.js,type=http-response,pattern=^https?:\/\//kandian\.wkandian\.com\/v5\/article\/complete, enable=true,max-size=1048576
+中青看点极速版2 = requires-body=true,script-path=https://raw.githubusercontent.com/SamuelZon258/wget/main/youth.js,type=http-response,pattern=^https:\/\//kandian\.wkandian\.com\/v5\/article\/red_packet, enable=true,max-size=1048576
+中青看点极速版3 = requires-body=true,script-path=https://raw.githubusercontent.com/SamuelZon258/wget/main/youth.js,type=http-response,pattern=^https:\/\//kandian\.wkandian\.com\/v5\/user\/app_stay\.json, enable=true,max-size=1048576
+中青看点极速版4 = requires-body=true,script-path=https://raw.githubusercontent.com/SamuelZon258/wget/main/youth.js,type=http-response,pattern=^https:\/\/\w+\.youth\.cn\/WebApi\/PunchCard\/signUp, enable=true,max-size=1048576
 
 中青签到&转盘宝箱 = type=cron,cronexpr="*/10 5-23 * * *",timeout=20,script-path=https://raw.githubusercontent.com/SamuelZon258/wget/main/youth_sign.js,enable=true
 中青自动阅读 = type=cron,cronexpr="10 */2 * * *",timeout=20,script-path=https://raw.githubusercontent.com/SamuelZon258/wget/main/youth.js,enable=true
