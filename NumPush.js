@@ -8,11 +8,19 @@ let zq_timebodys = ""
 
 let zqqdbody = $.isNode() ? (process.env.zqqdbody ? process.env.zqqdbody : "") : ($.getdata('zqqdbody') ? $.getdata('zqqdbody') : "")
 let zqqdbodyArr = []
-let zqwzbodys = ""
+let zqqdbodys = ""
 
 let zq_cookie = $.isNode() ? (process.env.zq_cookie ? process.env.zq_cookie : "") : ($.getdata('zq_cookie') ? $.getdata('zq_cookie') : "")
 let zq_cookieArr = []
 let zq_cookies = ""
+
+let zqlookStartbody= $.isNode() ? (process.env.zqlookStartbody ? process.env.zqlookStartbody : "") : ($.getdata('zqlookStartbody') ? $.getdata('zqlookStartbody') : "")
+let zqlookStartbodyArr = []
+let zqlookStartbodys = ""
+
+let zqboxbody= $.isNode() ? (process.env.zqboxbody ? process.env.zqboxbody : "") : ($.getdata('zqboxbody') ? $.getdata('zqboxbody') : "")
+let zqboxbodyArr = []
+let zqboxbodys = ""
 
 if (zq_timebody) {
     if (zq_timebody.indexOf("&") == -1) {
@@ -78,13 +86,39 @@ if (zq_cookie) {
     })
 }
 
-console.log(`共${zqwzbodyArr.length}个阅读body`)
-console.log(`共${zq_timebodyArr.length}个时间body`)
-$feed.push($.name, `共有\\n\
+if (zqlookStartbody) {
+    if (zqlookStartbody.indexOf("&") == -1) {
+        zqlookStartbodyArr.push(zqlookStartbody)
+    } else if (zqlookStartbody.indexOf("&") > -1) {
+        zqlookStartbodys = zqlookStartbody.split("&")
+    } else if (process.env.zqlookStartbody && process.env.zqlookStartbody.indexOf('&') > -1) {
+        zqlookStartbodyArr = process.env.zqlookStartbody.split('&');
+        console.log(`您选择的是用"&"隔开\n`)
+    }
+}
+
+if (zqboxbody) {
+    if (zqboxbody.indexOf("&") == -1) {
+        zqboxbodyArr.push(zqboxbody)
+    } else if (zqboxbody.indexOf("&") > -1) {
+        zqboxbodys = zqboxbody.split("&")
+    } else if (process.env.zqboxbody && process.env.zqboxbody.indexOf('&') > -1) {
+        zqboxbodyArr = process.env.zqboxbody.split('&');
+        console.log(`您选择的是用"&"隔开\n`)
+    }
+}
+
+let info = `共有\\n\
 Cookie:${zq_cookieArr.length}个\\n\
 timebody(阅读):${zq_timebodyArr.length}个(只需要一个,多了自行删除)\\n\
 body(阅读):${zqwzbodyArr.length}个\\n\
-zqwzbody(签到):${zqqdbodyArr.length}个`)
+zqwzbody(签到):${zqqdbodyArr.length}个\\n\
+zqlookStartbody(看看赚):${zqlookStartbodyArr.length}个\\n\
+zqboxbody(宝箱)${zqboxbodyArr.length}`
+
+console.log(info)
+
+$feed.push($.name, info)
 $.done()
 
 // 公共tools
