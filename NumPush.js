@@ -1,99 +1,52 @@
-const $ = new Env("中青看点推送剩余body");
+const $ = new Env("推送剩余body");
+//中青
 let zqwzbody = $.isNode() ? (process.env.zqwzbody ? process.env.zqwzbody : "") : ($.getdata('zqwzbody') ? $.getdata('zqwzbody') : "")
 let zqwzbodyArr = []
 
 let zq_timebody = $.isNode() ? (process.env.zq_timebody ? process.env.zq_timebody : "") : ($.getdata('zq_timebody') ? $.getdata('zq_timebody') : "")
 let zq_timebodyArr = []
-let zq_timebodys = ""
 
 let zqqdbody = $.isNode() ? (process.env.zqqdbody ? process.env.zqqdbody : "") : ($.getdata('zqqdbody') ? $.getdata('zqqdbody') : "")
 let zqqdbodyArr = []
-let zqqdbodys = ""
 
 let zq_cookie = $.isNode() ? (process.env.zq_cookie ? process.env.zq_cookie : "") : ($.getdata('zq_cookie') ? $.getdata('zq_cookie') : "")
 let zq_cookieArr = []
-let zq_cookies = ""
 
-let zqlookStartbody= $.isNode() ? (process.env.zqlookStartbody ? process.env.zqlookStartbody : "") : ($.getdata('zqlookStartbody') ? $.getdata('zqlookStartbody') : "")
+let zqlookStartbody = $.isNode() ? (process.env.zqlookStartbody ? process.env.zqlookStartbody : "") : ($.getdata('zqlookStartbody') ? $.getdata('zqlookStartbody') : "")
 let zqlookStartbodyArr = []
-let zqlookStartbodys = ""
 
-let zqboxbody= $.isNode() ? (process.env.zqboxbody ? process.env.zqboxbody : "") : ($.getdata('zqboxbody') ? $.getdata('zqboxbody') : "")
+let zqboxbody = $.isNode() ? (process.env.zqboxbody ? process.env.zqboxbody : "") : ($.getdata('zqboxbody') ? $.getdata('zqboxbody') : "")
 let zqboxbodyArr = []
-let zqboxbodys = ""
 
 if (zq_timebody) {
     if (zq_timebody.indexOf("&") == -1) {
         zq_timebodyArr.push(zq_timebody)
     } else if (zq_timebody.indexOf("&") > -1) {
-        zq_timebodys = zq_timebody.split("&")
-    } else if (process.env.zq_timebody && process.env.zq_timebody.indexOf('&') > -1) {
-        zq_timebodyArr = process.env.zq_timebody.split('&');
-        console.log(`您选择的是用"&"隔开\n`)
+        zq_timebodyArr = zq_timebody.split("&")
     }
-    Object.keys(zq_timebodys).forEach((item) => {
-        if (zq_timebodys[item] && !zq_timebodys[item].startsWith("#")) {
-            zq_timebodyArr.push(zq_timebodys[item])
-        }
-    })
 }
 
 if (zqwzbody) {
     if (zqwzbody.indexOf("&") == -1) {
         zqwzbodyArr.push(zqwzbody)
     } else if (zqwzbody.indexOf("&") > -1) {
-        zqwzbodys = zqwzbody.split("&")
-    } else if (process.env.zqwzbody && process.env.zqwzbody.indexOf('&') > -1) {
-        zqwzbodyArr = process.env.zqwzbody.split('&');
-        console.log(`您选择的是用"&"隔开\n`)
+        zqwzbodyArr = zqwzbody.split("&")
     }
-    Object.keys(zqwzbodys).forEach((item) => {
-        if (zqwzbodys[item] && !zqwzbodys[item].startsWith("#")) {
-            zqwzbodyArr.push(zqwzbodys[item])
-        }
-    })
 }
 
 if (zqqdbody) {
     if (zqqdbody.indexOf("&") == -1) {
         zqqdbodyArr.push(zqqdbody)
     } else if (zqqdbody.indexOf("&") > -1) {
-        zqqdbodys = zqqdbody.split("&")
-    } else if (process.env.zqqdbody && process.env.zqqdbody.indexOf('&') > -1) {
-        zqqdbodyArr = process.env.zqqdbody.split('&');
-        console.log(`您选择的是用"&"隔开\n`)
+        zqqdbodyArr = zqqdbody.split("&")
     }
-    Object.keys(zqqdbodys).forEach((item) => {
-        if (zqqdbodys[item] && !zqqdbodys[item].startsWith("#")) {
-            zqqdbodyArr.push(zqqdbodys[item])
-        }
-    })
-}
-
-if (zq_cookie) {
-    if (zq_cookie.indexOf("@") == -1 && zq_cookie.indexOf("@") == -1) {
-        zq_cookieArr.push(zq_cookie)
-    } else if (zq_cookie.indexOf("@") > -1) {
-        zq_cookies = zq_cookie.split("@")
-    } else if (process.env.zq_cookie && process.env.zq_cookie.indexOf('@') > -1) {
-        zq_cookieArr = process.env.zq_cookie.split('@');
-        console.log(`您选择的是用"@"隔开\n`)
-    }
-    Object.keys(zq_cookies).forEach((item) => {
-        if (zq_cookies[item] && !zq_cookies[item].startsWith("#")) {
-            zq_cookieArr.push(zq_cookies[item])
-        }
-    })
 }
 
 if (zqlookStartbody) {
     if (zqlookStartbody.indexOf("&") == -1) {
         zqlookStartbodyArr.push(zqlookStartbody)
     } else if (zqlookStartbody.indexOf("&") > -1) {
-        zqlookStartbodys = zqlookStartbody.split("&")
-    } else if (process.env.zqlookStartbody && process.env.zqlookStartbody.indexOf('&') > -1) {
-        zqlookStartbodyArr = process.env.zqlookStartbody.split('&');
-        console.log(`您选择的是用"&"隔开\n`)
+        zqlookStartbodyArr = zqlookStartbody.split("&")
     }
 }
 
@@ -101,14 +54,24 @@ if (zqboxbody) {
     if (zqboxbody.indexOf("&") == -1) {
         zqboxbodyArr.push(zqboxbody)
     } else if (zqboxbody.indexOf("&") > -1) {
-        zqboxbodys = zqboxbody.split("&")
-    } else if (process.env.zqboxbody && process.env.zqboxbody.indexOf('&') > -1) {
-        zqboxbodyArr = process.env.zqboxbody.split('&');
-        console.log(`您选择的是用"&"隔开\n`)
+        zqboxbodyArr = zqboxbody.split("&")
     }
 }
 
-let info = `共有\\n\
+if (zq_cookie) {
+    if (zq_cookie.indexOf("@") == -1 && zq_cookie.indexOf("@") == -1) {
+        zq_cookieArr.push(zq_cookie)
+    } else if (zq_cookie.indexOf("@") > -1) {
+        zq_cookies = zq_cookie.split("@")
+    }
+
+    let len = $.unique(zqwzbodyArr).length
+    if (len != zqwzbodyArr.length)
+        console.warn("中青body有重复")
+    else
+        console.log("中青body无重复,继续加油")
+
+    let info = `中青共有\\n\
 Cookie:${zq_cookieArr.length}个\\n\
 timebody(阅读):${zq_timebodyArr.length}个(只需要一个,多了自行删除)\\n\
 body(阅读):${zqwzbodyArr.length}个\\n\
@@ -116,9 +79,81 @@ zqwzbody(签到):${zqqdbodyArr.length}个\\n\
 zqlookStartbody(看看赚):${zqlookStartbodyArr.length}个\\n\
 zqboxbody(宝箱)${zqboxbodyArr.length}`
 
-console.log(info)
+    console.log(info)
+    // $feed.push($.name, info)
+}
 
-$feed.push($.name, info)
+//晶彩
+let jc_cookie = $.isNode() ? (process.env.jc_cookie ? process.env.jc_cookie : "") : ($.getdata('jc_cookie') ? $.getdata('jc_cookie') : "")
+let jc_cookieArr = []
+
+let wzbody = $.isNode() ? (process.env.wzbody ? process.env.wzbody : "") : ($.getdata('wzbody') ? $.getdata('wzbody') : "")
+let wzbodyArr = []
+
+let jc_timebody = $.isNode() ? (process.env.jc_timebody ? process.env.jc_timebody : "") : ($.getdata('jc_timebody') ? $.getdata('jc_timebody') : "")
+let jc_timebodyArr = []
+
+let lookStartbody= $.isNode() ? (process.env.lookStartbody ? process.env.lookStartbody : "") : ($.getdata('lookStartbody') ? $.getdata('lookStartbody') : "")
+let lookStartbodyArr = []
+
+let jcboxbody= $.isNode() ? (process.env.jcboxbody ? process.env.jcboxbody : "") : ($.getdata('jcboxbody') ? $.getdata('jcboxbody') : "")
+let jcboxbodyArr = []
+
+if (jc_timebody) {
+    if (jc_timebody.indexOf("&") == -1) {
+        jc_timebodyArr.push(jc_timebody)
+    } else if (jc_timebody.indexOf("&") > -1) {
+        jc_timebodyArr = jc_timebody.split("&")
+    }
+}
+
+if (wzbody) {
+    if (wzbody.indexOf("&") == -1) {
+        wzbodyArr.push(wzbody)
+    } else if (wzbody.indexOf("&") > -1) {
+        wzbodyArr = wzbody.split("&")
+    }
+}
+
+if (lookStartbody) {
+    if (lookStartbody.indexOf("&") == -1) {
+        lookStartbodyArr.push(lookStartbody)
+    } else if (lookStartbody.indexOf("&") > -1) {
+        lookStartbodyArr = lookStartbody.split("&")
+    }
+}
+
+if (jcboxbody) {
+    if (jcboxbody.indexOf("&") == -1) {
+        jcboxbodyArr.push(jcboxbody)
+    } else if (jcboxbody.indexOf("&") > -1) {
+        jcboxbodyArr = jcboxbody.split("&")
+    }
+}
+
+if (jc_cookie) {
+    if (jc_cookie.indexOf("@") == -1 && jc_cookie.indexOf("@") == -1) {
+        jc_cookieArr.push(jc_cookie)
+    } else if (jc_cookie.indexOf("@") > -1) {
+        jc_cookieArr = jc_cookie.split("@")
+    }
+    let len = $.unique(jc_timebodyArr).length
+    if (len != jc_timebodyArr.length)
+        console.warn("晶彩body有重复")
+    else
+        console.log("晶彩body无重复,继续加油")
+
+    let info = `晶彩共有\\n\
+Cookie:${jc_cookieArr.length}个\\n\
+timebody(阅读):${jc_timebodyArr.length}个(只需要一个,多了自行删除)\\n\
+body(阅读):${wzbodyArr.length}个\\n\
+lookStartbody(看看赚):${lookStartbodyArr.length}个\\n\
+jcboxbody(宝箱)${jcboxbodyArr.length}`
+    
+    console.log(info)
+    // $feed.push($.name, info)
+}
+
 $.done()
 
 // 公共tools
@@ -150,6 +185,20 @@ function Env(t, e) {
     return new class {
         constructor(t, e) {
             this.name = t, this.http = new s(this), this.data = null, this.dataFile = "box.dat", this.logs = [], this.isMute = !1, this.isNeedRewrite = !1, this.logSeparator = "\n", this.startTime = (new Date).getTime(), Object.assign(this, e), this.log("", `🔔${this.name}, 开始!`)
+        }
+
+        unique(arr) {
+            if (!Array.isArray(arr)) {
+                console.log('type error!')
+                return
+            }
+            var array = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (array.indexOf(arr[i]) === -1) {
+                    array.push(arr[i])
+                }
+            }
+            return array;
         }
 
         isNode() {
