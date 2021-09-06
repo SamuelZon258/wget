@@ -71,16 +71,22 @@ if (zq_cookie) {
     else
         console.log("中青body无重复,继续加油")
 
+    len = $.unique(zqlookStartbodyArr).length
+    if (len != zqlookStartbodyArr.length)
+        console.warn("晶彩看看赚有重复")
+    else
+        console.log("晶彩看看赚无重复,继续加油")
+
     let info = `中青共有\\n\
 Cookie:${zq_cookieArr.length}个\\n\
 timebody(阅读):${zq_timebodyArr.length}个(只需要一个,多了自行删除)\\n\
 body(阅读):${zqwzbodyArr.length}个\\n\
-zqwzbody(签到):${zqqdbodyArr.length}个\\n\
 zqlookStartbody(看看赚):${zqlookStartbodyArr.length}个\\n\
+zqwzbody(签到):${zqqdbodyArr.length}个\\n\
 zqboxbody(宝箱)${zqboxbodyArr.length}`
 
     console.log(info)
-    // $feed.push($.name, info)
+    $feed.push($.name, info)
 }
 
 //晶彩
@@ -98,6 +104,17 @@ let lookStartbodyArr = []
 
 let jcboxbody= $.isNode() ? (process.env.jcboxbody ? process.env.jcboxbody : "") : ($.getdata('jcboxbody') ? $.getdata('jcboxbody') : "")
 let jcboxbodyArr = []
+
+let qdbody= $.isNode() ? (process.env.qdbody ? process.env.qdbody : "") : ($.getdata('qdbody') ? $.getdata('qdbody') : "")
+let qdbodyArr = []
+
+if (qdbody) {
+    if (qdbody.indexOf("&") == -1) {
+        qdbodyArr.push(qdbody)
+    } else if (qdbody.indexOf("&") > -1) {
+        qdbodyArr = qdbody.split("&")
+    }
+}
 
 if (jc_timebody) {
     if (jc_timebody.indexOf("&") == -1) {
@@ -143,15 +160,22 @@ if (jc_cookie) {
     else
         console.log("晶彩body无重复,继续加油")
 
+    len = $.unique(lookStartbodyArr).length
+    if (len != lookStartbodyArr.length)
+        console.warn("晶彩看看赚有重复")
+    else
+        console.log("晶彩看看赚无重复,继续加油")
+
     let info = `晶彩共有\\n\
 Cookie:${jc_cookieArr.length}个\\n\
 timebody(阅读):${jc_timebodyArr.length}个(只需要一个,多了自行删除)\\n\
 body(阅读):${wzbodyArr.length}个\\n\
 lookStartbody(看看赚):${lookStartbodyArr.length}个\\n\
+qdbody(签到):${qdbodyArr.length}个\\n\
 jcboxbody(宝箱)${jcboxbodyArr.length}`
-    
+
     console.log(info)
-    // $feed.push($.name, info)
+    $feed.push($.name, info)
 }
 
 $.done()
