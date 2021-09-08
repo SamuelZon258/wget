@@ -27,6 +27,8 @@ let zqllzbodyArr = []
 let zq_withdraw = $.isNode() ? (process.env.zq_withdraw ? process.env.zq_withdraw : "") : ($.getdata('zq_withdraw') ? $.getdata('zq_withdraw') : "")
 let zq_withdrawArr = []
 
+let zq_cash = $.isNode() ? (process.env.zq_cash ? process.env.zq_cash : "30") : ($.getdata('zq_cash') ? $.getdata('zq_cash') : "30")
+
 if (zq_withdraw) {
     if (zq_withdraw.indexOf("@") == -1 && zq_withdraw.indexOf("@") == -1) {
         zq_withdrawArr.push(zq_withdraw)
@@ -121,7 +123,8 @@ zqsszbody(搜索赚):${zqsszbodyArr.length}个\\n\
 zqllzbody(浏览赚):${zqllzbodyArr.length}个\\n\
 zqwzbody(签到):${zqqdbodyArr.length}个\\n\
 zqboxbody(宝箱)${zqboxbodyArr.length}\\n\
-zq_withdraw(提现)${zq_withdrawArr.length}`
+zq_withdraw(提现)${zq_withdrawArr.length}\\n\
+自动提现金额${zq_cash}`
 
     console.log(info)
     sendinfo += info
@@ -149,6 +152,8 @@ let qdbodyArr = []
 
 let jc_withdraw = $.isNode() ? (process.env.jc_withdraw ? process.env.jc_withdraw : "") : ($.getdata('jc_withdraw') ? $.getdata('jc_withdraw') : "")
 let jc_withdrawArr = []
+
+let jc_cash = $.getdata('jc_cash') || 0.3;
 
 if (jc_withdraw) {
     if (jc_withdraw.indexOf("@") == -1 && jc_withdraw.indexOf("@") == -1) {
@@ -223,7 +228,8 @@ body(阅读):${wzbodyArr.length}个\\n\
 lookStartbody(看看赚):${lookStartbodyArr.length}个\\n\
 qdbody(签到):${qdbodyArr.length}个\\n\
 jcboxbody(宝箱)${jcboxbodyArr.length}\\n\
-jc_withdraw(提现)${jc_withdrawArr.length}`
+jc_withdraw(提现)${jc_withdrawArr.length}\\n\
+自动提现金额${jc_cash}`
 
     console.log(info)
     sendinfo += info
