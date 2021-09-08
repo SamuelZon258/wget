@@ -18,6 +18,39 @@ let zqlookStartbodyArr = []
 let zqboxbody = $.isNode() ? (process.env.zqboxbody ? process.env.zqboxbody : "") : ($.getdata('zqboxbody') ? $.getdata('zqboxbody') : "")
 let zqboxbodyArr = []
 
+let zqsszbody = $.isNode() ? (process.env.zqsszbody ? process.env.zqsszbody : "") : ($.getdata('zqsszbody') ? $.getdata('zqsszbody') : "")
+let zqsszbodyArr = []
+
+let zqllzbody = $.isNode() ? (process.env.zqllzbody ? process.env.zqllzbody : "") : ($.getdata('zqllzbody') ? $.getdata('zqllzbody') : "")
+let zqllzbodyArr = []
+
+let zq_withdraw = $.isNode() ? (process.env.zq_withdraw ? process.env.zq_withdraw : "") : ($.getdata('zq_withdraw') ? $.getdata('zq_withdraw') : "")
+let zq_withdrawArr = []
+
+if (zq_withdraw) {
+    if (zq_withdraw.indexOf("@") == -1 && zq_withdraw.indexOf("@") == -1) {
+        zq_withdrawArr.push(zq_withdraw)
+    } else if (zq_withdraw.indexOf("@") > -1) {
+        zq_withdraws = zq_withdraw.split("@")
+    }
+}
+
+if (zqsszbody) {
+    if (zqsszbody.indexOf("&") == -1) {
+        zqsszbodyArr.push(zqsszbody)
+    } else if (zqsszbody.indexOf("&") > -1) {
+        zqsszbodyArr = zqsszbody.split("&")
+    }
+}
+
+if (zqllzbody) {
+    if (zqllzbody.indexOf("&") == -1) {
+        zqllzbodyArr.push(zqllzbody)
+    } else if (zqllzbody.indexOf("&") > -1) {
+        zqllzbodyArr = zqllzbody.split("&")
+    }
+}
+
 if (zq_timebody) {
     if (zq_timebody.indexOf("&") == -1) {
         zq_timebodyArr.push(zq_timebody)
@@ -58,6 +91,8 @@ if (zqboxbody) {
     }
 }
 
+let sendinfo = ""
+
 if (zq_cookie) {
     if (zq_cookie.indexOf("@") == -1 && zq_cookie.indexOf("@") == -1) {
         zq_cookieArr.push(zq_cookie)
@@ -73,21 +108,25 @@ if (zq_cookie) {
 
     len = $.unique(zqlookStartbodyArr).length
     if (len != zqlookStartbodyArr.length)
-        console.warn("晶彩看看赚有重复")
+        console.warn("中青看看赚有重复")
     else
-        console.log("晶彩看看赚无重复,继续加油")
+        console.log("中青看看赚无重复,继续加油")
 
     let info = `中青共有\\n\
 Cookie:${zq_cookieArr.length}个\\n\
 timebody(阅读):${zq_timebodyArr.length}个(只需要一个,多了自行删除)\\n\
 body(阅读):${zqwzbodyArr.length}个\\n\
 zqlookStartbody(看看赚):${zqlookStartbodyArr.length}个\\n\
+zqsszbody(搜索赚):${zqsszbodyArr.length}个\\n\
+zqllzbody(浏览赚):${zqllzbodyArr.length}个\\n\
 zqwzbody(签到):${zqqdbodyArr.length}个\\n\
-zqboxbody(宝箱)${zqboxbodyArr.length}`
+zqboxbody(宝箱)${zqboxbodyArr.length}\\n\
+zq_withdraw(提现)${zq_withdrawArr.length}`
 
     console.log(info)
-    $feed.push($.name, info)
+    sendinfo += info
 }
+sendinfo += "\\n"
 
 //晶彩
 let jc_cookie = $.isNode() ? (process.env.jc_cookie ? process.env.jc_cookie : "") : ($.getdata('jc_cookie') ? $.getdata('jc_cookie') : "")
@@ -99,14 +138,25 @@ let wzbodyArr = []
 let jc_timebody = $.isNode() ? (process.env.jc_timebody ? process.env.jc_timebody : "") : ($.getdata('jc_timebody') ? $.getdata('jc_timebody') : "")
 let jc_timebodyArr = []
 
-let lookStartbody= $.isNode() ? (process.env.lookStartbody ? process.env.lookStartbody : "") : ($.getdata('lookStartbody') ? $.getdata('lookStartbody') : "")
+let lookStartbody = $.isNode() ? (process.env.lookStartbody ? process.env.lookStartbody : "") : ($.getdata('lookStartbody') ? $.getdata('lookStartbody') : "")
 let lookStartbodyArr = []
 
-let jcboxbody= $.isNode() ? (process.env.jcboxbody ? process.env.jcboxbody : "") : ($.getdata('jcboxbody') ? $.getdata('jcboxbody') : "")
+let jcboxbody = $.isNode() ? (process.env.jcboxbody ? process.env.jcboxbody : "") : ($.getdata('jcboxbody') ? $.getdata('jcboxbody') : "")
 let jcboxbodyArr = []
 
-let qdbody= $.isNode() ? (process.env.qdbody ? process.env.qdbody : "") : ($.getdata('qdbody') ? $.getdata('qdbody') : "")
+let qdbody = $.isNode() ? (process.env.qdbody ? process.env.qdbody : "") : ($.getdata('qdbody') ? $.getdata('qdbody') : "")
 let qdbodyArr = []
+
+let jc_withdraw = $.isNode() ? (process.env.jc_withdraw ? process.env.jc_withdraw : "") : ($.getdata('jc_withdraw') ? $.getdata('jc_withdraw') : "")
+let jc_withdrawArr = []
+
+if (jc_withdraw) {
+    if (jc_withdraw.indexOf("@") == -1 && jc_withdraw.indexOf("@") == -1) {
+        jc_withdrawArr.push(jc_withdraw)
+    } else if (jc_withdraw.indexOf("@") > -1) {
+        jc_withdraws = jc_withdraw.split("@")
+    }
+}
 
 if (qdbody) {
     if (qdbody.indexOf("&") == -1) {
@@ -172,11 +222,13 @@ timebody(阅读):${jc_timebodyArr.length}个(只需要一个,多了自行删除)
 body(阅读):${wzbodyArr.length}个\\n\
 lookStartbody(看看赚):${lookStartbodyArr.length}个\\n\
 qdbody(签到):${qdbodyArr.length}个\\n\
-jcboxbody(宝箱)${jcboxbodyArr.length}`
+jcboxbody(宝箱)${jcboxbodyArr.length}\\n\
+jc_withdraw(提现)${jc_withdrawArr.length}`
 
     console.log(info)
-    $feed.push($.name, info)
+    sendinfo += info
 }
+$feed.push($.name, sendinfo)
 
 $.done()
 
