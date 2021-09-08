@@ -27,7 +27,7 @@ let zqllzbodyArr = []
 let zq_withdraw = $.isNode() ? (process.env.zq_withdraw ? process.env.zq_withdraw : "") : ($.getdata('zq_withdraw') ? $.getdata('zq_withdraw') : "")
 let zq_withdrawArr = []
 
-let zq_cash = $.isNode() ? (process.env.zq_cash ? process.env.zq_cash : "30") : ($.getdata('zq_cash') ? $.getdata('zq_cash') : "30")
+let zq_cash =  $.getdata('zq_cash') || 0.3;
 
 if (zq_withdraw) {
     if (zq_withdraw.indexOf("@") == -1 && zq_withdraw.indexOf("@") == -1) {
