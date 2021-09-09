@@ -1,3 +1,8 @@
+/*
+厚颜无耻发个推荐码
+中青推荐码:58763427
+晶彩推荐码:55008511
+*/
 const $ = new Env("推送剩余body");
 //中青
 let zqwzbody = $.isNode() ? (process.env.zqwzbody ? process.env.zqwzbody : "") : ($.getdata('zqwzbody') ? $.getdata('zqwzbody') : "")
