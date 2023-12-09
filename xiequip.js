@@ -2,20 +2,28 @@
 携趣自动刷新IP
 [task_local]
 20 0 * * * https://raw.githubusercontent.com/justplayscript/ddxp/main/xiequip.js, tag=刷新携趣IP, enabled=true
-xquid为UID xqukey为UKEY 在携趣白名单页面获取
  */
 
 const $ = new Env('携趣自动刷新IP');
 let xquid = $.getdata('xquid')
     let xqukey = $.getdata('xqukey')
     !(async() => {
-        let ip = await getIP();
+        let ip = await getIP(`https://www.ip.cn/api/index?ip&type=0`);
         console.log(ip)
+        if (!ip) {
+            ip = await getIP(`https://searchplugin.csdn.net/api/v1/ip/get`);
+            console.log(ip)
+        }
+        if (!ip) {
+            ip = await getIP(`https://api.vvhan.com/api/getIpInfo`);
+            console.log(ip)
+        }
         if (ip) {
             let iparr = await getXQIP();
             console.log("更新前" + iparr)
             for (let i = 0; i < iparr.length; i++) {
                 if (iparr[i] == ip) {
+                    console.log("ip一样 不更新")
                     return;
                 }
             }
@@ -30,14 +38,16 @@ let xquid = $.getdata('xquid')
     .catch((e) => $.logErr(e))
     .finally(() => $.done())
 
-function getIP(timeout = 0) {
+function getIP(url, timeout = 0) {
     return new Promise((resolve) => {
         $.get({
-            url: `https://qifu-api.baidubce.com/ip/local/geo/v1/district`
+            url: url
         }, async(err, resp, data) => {
             data = JSON.parse(data)
-                if (data.code == "Success") {
+                if (data.ip != null && data.ip.length > 10) {
                     resolve(data.ip)
+                } else if (data.data != null && data.data.ip != null && data.data.ip.length > 10) {
+                    resolve(data.data.ip)
                 } else {
                     resolve(false)
                 }
